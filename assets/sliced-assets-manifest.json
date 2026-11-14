@@ -1,0 +1,456 @@
+{
+  "source": "Ashen Halo Pixel Assets sprite sheets provided in this conversation",
+  "player": {
+    "idle": 4,
+    "walk": 8,
+    "run": 8,
+    "jump": 3,
+    "dodge": 3,
+    "slide": 3,
+    "attack_showcase": 7
+  },
+  "weapons": [
+    {
+      "id": 0,
+      "file": "assets/weapons/generated-swords/sword_00.png",
+      "size": [
+        145,
+        372
+      ]
+    },
+    {
+      "id": 1,
+      "file": "assets/weapons/generated-swords/sword_01.png",
+      "size": [
+        131,
+        372
+      ]
+    },
+    {
+      "id": 2,
+      "file": "assets/weapons/generated-swords/sword_02.png",
+      "size": [
+        125,
+        372
+      ]
+    },
+    {
+      "id": 3,
+      "file": "assets/weapons/generated-swords/sword_03.png",
+      "size": [
+        162,
+        372
+      ]
+    },
+    {
+      "id": 4,
+      "file": "assets/weapons/generated-swords/sword_04.png",
+      "size": [
+        158,
+        370
+      ]
+    },
+    {
+      "id": 5,
+      "file": "assets/weapons/generated-swords/sword_05.png",
+      "size": [
+        128,
+        360
+      ]
+    },
+    {
+      "id": 6,
+      "file": "assets/weapons/generated-swords/sword_06.png",
+      "size": [
+        125,
+        368
+      ]
+    },
+    {
+      "id": 7,
+      "file": "assets/weapons/generated-swords/sword_07.png",
+      "size": [
+        145,
+        369
+      ]
+    }
+  ],
+  "effects": {
+    "red-slash": [
+      {
+        "file": "assets/effects/red-slash/frame_00.png",
+        "size": [
+          124,
+          135
+        ]
+      },
+      {
+        "file": "assets/effects/red-slash/frame_01.png",
+        "size": [
+          163,
+          144
+        ]
+      },
+      {
+        "file": "assets/effects/red-slash/frame_02.png",
+        "size": [
+          170,
+          155
+        ]
+      },
+      {
+        "file": "assets/effects/red-slash/frame_03.png",
+        "size": [
+          170,
+          159
+        ]
+      },
+      {
+        "file": "assets/effects/red-slash/frame_04.png",
+        "size": [
+          180,
+          156
+        ]
+      }
+    ],
+    "red-strike": [
+      {
+        "file": "assets/effects/red-strike/frame_00.png",
+        "size": [
+          121,
+          149
+        ]
+      },
+      {
+        "file": "assets/effects/red-strike/frame_01.png",
+        "size": [
+          103,
+          160
+        ]
+      },
+      {
+        "file": "assets/effects/red-strike/frame_02.png",
+        "size": [
+          130,
+          161
+        ]
+      },
+      {
+        "file": "assets/effects/red-strike/frame_03.png",
+        "size": [
+          130,
+          162
+        ]
+      },
+      {
+        "file": "assets/effects/red-strike/frame_04.png",
+        "size": [
+          108,
+          159
+        ]
+      }
+    ],
+    "ice-wave": [
+      {
+        "file": "assets/effects/ice-wave/frame_00.png",
+        "size": [
+          136,
+          79
+        ]
+      },
+      {
+        "file": "assets/effects/ice-wave/frame_01.png",
+        "size": [
+          155,
+          112
+        ]
+      },
+      {
+        "file": "assets/effects/ice-wave/frame_02.png",
+        "size": [
+          155,
+          115
+        ]
+      },
+      {
+        "file": "assets/effects/ice-wave/frame_03.png",
+        "size": [
+          155,
+          116
+        ]
+      },
+      {
+        "file": "assets/effects/ice-wave/frame_04.png",
+        "size": [
+          235,
+          145
+        ]
+      }
+    ],
+    "void-bolt": [
+      {
+        "file": "assets/effects/void-bolt/frame_00.png",
+        "size": [
+          107,
+          63
+        ]
+      },
+      {
+        "file": "assets/effects/void-bolt/frame_01.png",
+        "size": [
+          130,
+          85
+        ]
+      },
+      {
+        "file": "assets/effects/void-bolt/frame_02.png",
+        "size": [
+          120,
+          95
+        ]
+      },
+      {
+        "file": "assets/effects/void-bolt/frame_03.png",
+        "size": [
+          120,
+          102
+        ]
+      },
+      {
+        "file": "assets/effects/void-bolt/frame_04.png",
+        "size": [
+          154,
+          85
+        ]
+      }
+    ],
+    "fire-burst": [
+      {
+        "file": "assets/effects/fire-burst/frame_00.png",
+        "size": [
+          127,
+          95
+        ]
+      },
+      {
+        "file": "assets/effects/fire-burst/frame_01.png",
+        "size": [
+          160,
+          111
+        ]
+      },
+      {
+        "file": "assets/effects/fire-burst/frame_02.png",
+        "size": [
+          160,
+          116
+        ]
+      },
+      {
+        "file": "assets/effects/fire-burst/frame_03.png",
+        "size": [
+          160,
+          137
+        ]
+      },
+      {
+        "file": "assets/effects/fire-burst/frame_04.png",
+        "size": [
+          178,
+          141
+        ]
+      }
+    ],
+    "impact-spark": [
+      {
+        "file": "assets/effects/impact-spark/frame_00.png",
+        "size": [
+          127,
+          93
+        ]
+      },
+      {
+        "file": "assets/effects/impact-spark/frame_01.png",
+        "size": [
+          145,
+          106
+        ]
+      },
+      {
+        "file": "assets/effects/impact-spark/frame_02.png",
+        "size": [
+          132,
+          119
+        ]
+      },
+      {
+        "file": "assets/effects/impact-spark/frame_03.png",
+        "size": [
+          160,
+          133
+        ]
+      }
+    ],
+    "ultimate": [
+      {
+        "file": "assets/effects/ultimate/frame_00.png",
+        "size": [
+          171,
+          135
+        ]
+      },
+      {
+        "file": "assets/effects/ultimate/frame_01.png",
+        "size": [
+          200,
+          141
+        ]
+      },
+      {
+        "file": "assets/effects/ultimate/frame_02.png",
+        "size": [
+          200,
+          186
+        ]
+      },
+      {
+        "file": "assets/effects/ultimate/frame_03.png",
+        "size": [
+          200,
+          187
+        ]
+      },
+      {
+        "file": "assets/effects/ultimate/frame_04.png",
+        "size": [
+          200,
+          160
+        ]
+      },
+      {
+        "file": "assets/effects/ultimate/frame_05.png",
+        "size": [
+          230,
+          190
+        ]
+      },
+      {
+        "file": "assets/effects/ultimate/frame_06.png",
+        "size": [
+          298,
+          204
+        ]
+      }
+    ]
+  },
+  "bosses": [
+    {
+      "id": 1,
+      "name": "ash-brute",
+      "file": "assets/bosses/roster/01-ash-brute.png",
+      "raw_size": [
+        391,
+        296
+      ]
+    },
+    {
+      "id": 2,
+      "name": "blood-bishop",
+      "file": "assets/bosses/roster/02-blood-bishop.png",
+      "raw_size": [
+        349,
+        327
+      ]
+    },
+    {
+      "id": 3,
+      "name": "fallen-seraph",
+      "file": "assets/bosses/roster/03-fallen-seraph.png",
+      "raw_size": [
+        397,
+        376
+      ]
+    },
+    {
+      "id": 4,
+      "name": "frost-beast",
+      "file": "assets/bosses/roster/04-frost-beast.png",
+      "raw_size": [
+        350,
+        349
+      ]
+    },
+    {
+      "id": 5,
+      "name": "void-reaper",
+      "file": "assets/bosses/roster/05-void-reaper.png",
+      "raw_size": [
+        369,
+        311
+      ]
+    },
+    {
+      "id": 6,
+      "name": "ember-dragon",
+      "file": "assets/bosses/roster/06-ember-dragon.png",
+      "raw_size": [
+        432,
+        320
+      ]
+    },
+    {
+      "id": 7,
+      "name": "crimson-duelist",
+      "file": "assets/bosses/roster/07-crimson-duelist.png",
+      "raw_size": [
+        361,
+        286
+      ]
+    },
+    {
+      "id": 8,
+      "name": "horned-demon",
+      "file": "assets/bosses/roster/08-horned-demon.png",
+      "raw_size": [
+        323,
+        332
+      ]
+    },
+    {
+      "id": 9,
+      "name": "spectral-knight",
+      "file": "assets/bosses/roster/09-spectral-knight.png",
+      "raw_size": [
+        323,
+        296
+      ]
+    },
+    {
+      "id": 10,
+      "name": "spider-queen",
+      "file": "assets/bosses/roster/10-spider-queen.png",
+      "raw_size": [
+        345,
+        295
+      ]
+    },
+    {
+      "id": 11,
+      "name": "feathered-nightmare",
+      "file": "assets/bosses/roster/11-feathered-nightmare.png",
+      "raw_size": [
+        429,
+        302
+      ]
+    },
+    {
+      "id": 12,
+      "name": "final-seraph",
+      "file": "assets/bosses/roster/12-final-seraph.png",
+      "raw_size": [
+        394,
+        342
+      ]
+    }
+  ]
+}
