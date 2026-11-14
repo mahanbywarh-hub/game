@@ -1,0 +1,24 @@
+ASHEN HALO — UPDATE INSTALLATION
+================================
+
+1. Back up your existing game folder.
+2. Extract this ZIP into the folder containing index.html.
+3. Allow the included game files and assets to merge/replace. Keep your existing music files if you already have a /music folder.
+4. Open index.html through your local server or your normal static hosting.
+
+PROFILE MUSIC LIBRARY
+---------------------
+- Music controls are inside HERO PROFILE.
+- The player can choose only tracks listed in music/playlist.js.
+- Put audio files inside /music, then add each filename to that playlist file.
+- There is no upload button or file picker in the game.
+- The selected track loops until the player changes it or pauses playback.
+- Browsers may require one PLAY click before allowing audio.
+
+OFFLINE ART GUIDE
+-----------------
+Open docs/ASSET-GUIDE.html directly from the extracted files. It is not linked from the game UI.
+
+MOBILE / DESKTOP
+----------------
+The interface uses responsive layouts. On phones, touch controls appear below the game canvas. Desktop keyboard controls remain unchanged.

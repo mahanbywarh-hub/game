@@ -1,0 +1,51 @@
+راهنمای سریع مسیر فایل‌ها
+
+کاراکتر:
+assets/characters/player/idle/frame_00.png تا frame_03.png
+assets/characters/player/run/frame_00.png تا frame_05.png
+assets/characters/player/jump/frame_00.png تا frame_02.png
+assets/characters/player/attack/frame_00.png تا frame_05.png
+
+شمشیرها:
+assets/weapons/ash-blade/frames/
+assets/weapons/ember-blade/frames/
+assets/weapons/blood-scythe/frames/
+assets/weapons/lightning-blade/frames/
+assets/weapons/halo-breaker/frames/
+هرکدام frame_00.png تا frame_05.png دارند.
+
+بک‌گراندها:
+assets/backgrounds/01-ash-forest.png
+assets/backgrounds/02-red-church.png
+assets/backgrounds/03-frozen-peak.png
+assets/backgrounds/04-cursed-foundry.png
+assets/backgrounds/05-empty-throne.png
+
+باس‌ها:
+assets/bosses/guardian.png
+assets/bosses/bishop.png
+assets/bosses/titan.png
+assets/bosses/spider-king.png
+assets/bosses/void-emperor.png
+
+برای دیدن فریم‌های نمونه، ASSET-GUIDE.html را باز کن.
+برای تنظیم تعداد و سرعت فریم، assets/asset-config.js را ویرایش کن.
+
+ADDED SPRITE ASSETS
+assets/characters/player/idle/              4 normalized transparent frames
+assets/characters/player/walk/              8 normalized transparent frames
+assets/characters/player/run/               8 normalized transparent frames
+assets/characters/player/jump/              3 normalized transparent frames
+assets/characters/player/dodge/              3 normalized transparent frames
+assets/characters/player/slide/              3 normalized transparent frames
+assets/characters/player/attack-showcase/    7 raw showcase frames
+assets/weapons/generated-swords/             8 isolated sword sprites
+assets/effects/red-slash/                    5 slash frames
+assets/effects/red-strike/                   5 strike frames
+assets/effects/ice-wave/                     5 ice-wave frames
+assets/effects/void-bolt/                    5 projectile frames
+assets/effects/fire-burst/                   5 fire frames
+assets/effects/impact-spark/                 4 impact frames
+assets/effects/ultimate/                     7 ultimate frames
+assets/bosses/roster/                        12 isolated boss/enemy sprites
+assets/sliced-assets-manifest.json           sprite extraction manifest

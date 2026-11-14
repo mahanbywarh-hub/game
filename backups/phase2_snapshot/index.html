@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090a10">
+<title>ASHEN HALO — فرشته‌ی بال‌های خونین</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ambient"></div>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">✦</span><div><b>ASHEN HALO</b><small>افسانه‌ی بال‌های خونین</small></div></div>
+  <div class="top-stats"><span>🪙 <b id="coins">350</b></span><span>⚔️ <b id="weaponName">شمشیر خاکستر</b></span></div>
+</header>
+<main>
+  <section id="lobby" class="screen active">
+    <div class="hero-panel">
+      <div class="hero-copy"><div class="eyebrow">یک ماجراجویی پیکسلی تاریک</div>
+        <h1>وقتی نور،<br><em>خون گریه می‌کند.</em></h1>
+        <p>در نقش فرشته‌ای تبعیدشده با بال‌های سرخ، از سرزمین‌های سوخته عبور کن، نگهبانان نفرین‌شده را شکست بده و حقیقت هاله‌ی شکسته را پیدا کن. با جایگزین‌کردن فایل‌های PNG در پوشه‌های پروژه، شخصیت، فریم‌های شمشیر و پس‌زمینه‌ی هر قلمرو را خودت طراحی کن.</p>
+        <div class="hero-actions"><button class="primary" onclick="startGame()">ورود به مرحله</button><button class="secondary" onclick="showScreen('stages')">انتخاب مرحله</button></div>
+        <div class="micro-stats"><span><b>۵</b> قلمرو تاریک</span><span><b>۵</b> نبرد باس</span><span><b>∞</b> طرح قابل‌سفارشی‌سازی</span></div>
+      </div>
+      <div class="hero-art"><div class="halo"></div><canvas id="heroCharacterCanvas" width="180" height="200" aria-label="پیش‌نمایش شخصیت"></canvas><div class="art-label">YOUR CHARACTER / LIVE PREVIEW</div></div>
+    </div>
+    <div class="lobby-grid">
+      <button class="feature-card" onclick="showScreen('shop')"><span class="feature-icon">⚔</span><b>آهنگری خاکستر</b><small>شمشیرها و ارتقاها</small></button>
+      <button class="feature-card" onclick="showScreen('stages')"><span class="feature-icon">♜</span><b>دروازه‌ی مراحل</b><small>قلمرو و باس‌فایت‌ها</small></button>
+      <button class="feature-card" onclick="showScreen('codex')"><span class="feature-icon">📜</span><b>دفتر افسانه</b><small>داستان و راهنمای طراحی</small></button>
+      <a class="feature-card" href="ASSET-GUIDE.html"><span class="feature-icon">▧</span><b>راهنمای فایل‌های گرافیکی</b><small>نمونه‌ی فریم‌ها و پوشه‌های شخصیت، شمشیر و بک‌گراند</small></a>
+    </div>
+    <div class="section-heading"><div><span class="eyebrow">YOUR JOURNEY</span><h2>مسیر نفرین</h2></div><span class="muted">هر قلمرو قابل ویرایش است</span></div>
+    <div class="journey" id="journey"></div>
+  </section>
+
+  <section id="game" class="screen">
+    <div class="game-heading"><div><span class="eyebrow">FIELD / 0<span id="stageNumber">1</span></span><h2 id="stageTitle">جنگل خاکستر</h2></div><div class="game-heading-actions"><button class="secondary" onclick="showScreen('lobby')">بازگشت به لابی</button></div></div>
+    <div class="game-frame"><canvas id="gameCanvas" width="960" height="440" aria-label="بازی پیکسلی"></canvas>
+      <div class="game-hud"><div class="health-wrap"><span>جان فرشته</span><div class="health-track"><i id="playerHealth"></i></div><div class="energy-label" id="energyLabel">هاله ۰٪</div><div class="health-track energy-track" id="energyTrack"><i id="playerEnergy"></i></div></div><div class="boss-hud"><span id="bossName">نگهبان پوسیده</span><div class="health-track boss-track"><i id="bossHealth"></i></div></div></div>
+      <div class="combat-ability-hud" aria-label="وضعیت مهارت‌ها">
+        <div class="ability-chip"><kbd>J</kbd><b>کمبو</b><small>سه ضربه</small></div>
+        <div class="ability-chip"><kbd>H</kbd><b>سنگین</b><small id="heavyStatus">آماده</small></div>
+        <div class="ability-chip"><kbd>Q</kbd><b>موج سرخ</b><small id="waveStatus">آماده</small></div>
+        <div class="ability-chip"><kbd>K</kbd><b>سایه‌شکاف</b><small id="shadowStatus">آماده</small></div>
+        <div class="ability-chip"><kbd>V</kbd><b>فرود</b><small id="descentStatus">آماده</small></div>
+        <div class="ability-chip"><kbd>E</kbd><b>هاله</b><small id="haloStatus">آماده</small></div>
+        <div class="ability-chip"><kbd>C</kbd><b>موج یخی</b><small id="frostStatus">آماده</small></div>
+        <div class="ability-chip"><kbd>X</kbd><b>نیزه‌ی خلأ</b><small id="voidStatus">آماده</small></div>
+      </div>
+      <div class="game-help">حرکت: A/D یا ← → · پرش دوبل: Space · کمبو: J · ضربه‌ی سنگین: H · دش: Shift · موج سرخ: Q · سایه‌شکاف: K (۳۵٪) · فرود فرشته: V (در هوا، ۲۰٪) · هاله‌ی شکسته: E (۲۵٪) · موج یخی: C (۳۰٪) · نیزه‌ی خلأ: X (۳۵٪) · تله‌ی روح: F (۴۰٪) · باران خون: R (۴۵٪) · داوری نهایی: L (۱۰۰٪)</div>
+      <div id="gameOverlay" class="game-overlay"><div class="overlay-rune">✦</div><span class="eyebrow" id="overlayKicker">ASHEN HALO / STORY MODE</span><h3 id="overlayTitle">آماده‌ای؟</h3><p id="overlayText">از دشمن‌ها عبور کن و به باس برس.</p><div class="overlay-actions"><button id="overlayButton" class="primary" onclick="resumeGame()">شروع نبرد</button><button id="overlayAltButton" class="secondary hidden" style="display:none">انتخاب دوم</button></div></div>
+    </div>
+    <div class="touch-controls" aria-label="کنترل لمسی"><button onpointerdown="touchKey('ArrowLeft',true)" onpointerup="touchKey('ArrowLeft',false)" onpointerleave="touchKey('ArrowLeft',false)" onpointercancel="touchKey('ArrowLeft',false)">◀</button><button onpointerdown="touchKey('ArrowRight',true)" onpointerup="touchKey('ArrowRight',false)" onpointerleave="touchKey('ArrowRight',false)" onpointercancel="touchKey('ArrowRight',false)">▶</button><span></span><button onpointerdown="touchKey(' ',true)" onpointerup="touchKey(' ',false)" onpointerleave="touchKey(' ',false)" onpointercancel="touchKey(' ',false)">پرش</button><button onpointerdown="touchAttack()">⚔ کمبو J</button><button onpointerdown="touchHeavyAttack()">ضربه H</button><button onpointerdown="touchWave()">موج Q</button><button onpointerdown="touchSpecial()">سایه K</button><button onpointerdown="touchDescent()">فرود V</button><button onpointerdown="touchBurst()">هاله E</button><button onpointerdown="touchFrostWave()">یخی C</button><button onpointerdown="touchVoidBolt()">خلأ X</button><button onpointerdown="touchSoulSnare()">تله F</button><button onpointerdown="touchBloodRain()">باران R</button><button onpointerdown="touchUltimate()">نهایی L</button></div>
+    <div class="combat-settings" aria-label="تنظیمات مبارزه"><label><input id="shakeToggle" type="checkbox"> لرزش دوربین</label><label><input id="flashToggle" type="checkbox" checked> فلاش ضربه</label><label><input id="audioToggle" type="checkbox" checked> صدای مبارزه</label><label class="volume-setting">صدا <input id="audioVolume" type="range" min="0" max="100" value="32"></label></div>
+    <div class="game-bottom"><span>J کمبو سه‌مرحله‌ای · H ضربه‌ی سنگین · Q موج سرخ · K سایه‌شکاف · V فرود فرشته · E هاله‌ی شکسته · C موج یخی · X نیزه‌ی خلأ · F تله‌ی روح · R باران خون · L داوری نهایی. Space پرش دوبل و Shift دش است.</span><button class="secondary" onclick="resetGame()">شروع دوباره</button></div>
+  </section>
+
+  <section id="stages" class="screen">
+    <div class="section-heading"><div><span class="eyebrow">CHAPTER SELECT</span><h2>دروازه‌ی قلمروها</h2><p class="muted">همه‌ی مراحل برای تست باز هستند؛ هر مرحله می‌تواند بک‌گراند و باس جدا داشته باشد.</p></div><button class="secondary" onclick="showScreen('lobby')">بازگشت</button></div>
+    <div id="stageGrid" class="stage-grid"></div>
+  </section>
+
+  <section id="shop" class="screen">
+    <div class="section-heading"><div><span class="eyebrow">ASH FORGE</span><h2>آهنگری خاکستر</h2><p class="muted">سلاح‌ها قدرت و رنگ افکت حمله را تغییر می‌دهند.</p></div><button class="secondary" onclick="showScreen('lobby')">بازگشت</button></div>
+    <div id="shopGrid" class="shop-grid"></div>
+  </section>
+
+  <section id="codex" class="screen">
+    <div class="section-heading"><div><span class="eyebrow">LORE & ART BIBLE</span><h2>دفتر افسانه</h2></div><button class="secondary" onclick="showScreen('lobby')">بازگشت</button></div>
+    <div class="lore-layout"><article class="lore-card"><h3>پیش‌درآمد — فرشته‌ای که سقوط را انتخاب کرد</h3><p>پیش از آن‌که آسمان نامی داشته باشد، هاله‌ی نخستین میان جهان زندگان و دریای خاطرات پلی ساخت. فرشتگان سوگند خوردند که هیچ خاطره‌ای را قربانی نکنند؛ اما پس از جنگ نخست، شورا تصمیم گرفت خاطرات دردناک را از میان مردم حذف کند. هر خاطره‌ی جداشده به نوری تبدیل می‌شد که هاله را روشن‌تر نگه می‌داشت. درخشش آسمان، بهای فراموشی میلیون‌ها نفر بود.</p><p>سِرا، نگهبان دروازه‌ی پایین، فرمان بستن دروازه را دریافت کرد؛ پشت آن کودکانی پناه گرفته بودند. او فرمان را شکست و هاله‌ی خود را خرد کرد تا زندانیان فرار کنند. بال‌هایش سفید نماندند؛ نه از شرارت، بلکه از خاکستر و خونی که برای بازکردن قفل پرداخت شد. شورا نامش را پاک کرد و برای پنهان‌کردن حقیقت، پنج مُهر را به پنج نگهبان سپرد.</p><h3>اِیرِن، صدای داخل هاله</h3><p>اِیرِن آخرین کاتبِ دفتر نام‌ها بود. او پیش از نابودی بایگانی، صدای خود را در ترکِ هاله‌ی سِرا پنهان کرد. او انسان زنده‌ای نیست؛ خاطره‌ای است که هنوز به پایان خود رضایت نداده. هر بار که مُهری شکسته می‌شود، بخشی از حافظه‌ی سِرا برمی‌گردد و صدای اِیرِن ضعیف‌تر می‌شود. در پایان، بازیکن باید بپذیرد که نجات جهان گاهی به معنای خداحافظی با تنها صدایی است که در تمام سفر همراهش بوده.</p><h3>پایان‌ها</h3><p>پایان «آسمانی بدون زنجیر» با شکستن هاله، همه‌ی نام‌ها را آزاد می‌کند؛ جهان باید بدون نورِ مصنوعی دوباره خودش را بسازد. پایان «نور سنگین» هاله را بازسازی می‌کند و امنیت را برمی‌گرداند، اما بهای آن فراموشی و بازگشت چرخه است. هیچ‌یک پایان بی‌هزینه‌ای نیست.</p></article>
+    <article class="lore-card"><h3>ساخت تصویر مناسب</h3><ol><li>شخصیت یا باس را با فرمت PNG شفاف خروجی بگیر تا پس‌زمینه‌ی سفید دور آن دیده نشود.</li><li>برای انیمیشن، فریم‌ها را در یک شبکه‌ی منظم با اندازه‌های یکسان کنار هم بچین.</li><li>برای محیط، تصویر عریض بساز؛ مثلاً 960×440 یا بزرگ‌تر.</li><li>برای جزئیات پیکسلی، تصاویر را در اندازه‌ی اصلی طراحی کن و موقع بزرگ‌کردن، حالت Pixelated حفظ می‌شود.</li><li>برای تغییر یک فریم، تصویر همان شماره را در پوشه‌ی مربوط جایگزین کن؛ نام و پسوند فایل باید حفظ شود.</li></ol><p class="warning">این نسخه تصویرها را از فایل‌های پوشه‌ی assets می‌خواند. برای تغییر ظاهر، فایل PNG را جایگزین کن؛ تنظیمات تعداد و سرعت فریم در assets/asset-config.js قرار دارد.</p></article></div>
+    <div class="section-heading story-heading"><div><span class="eyebrow">CHAPTER ARCHIVE</span><h2>وقایع پنج قلمرو</h2><p class="muted">روایت‌ها در طول پیشروی، گفت‌وگو و تغییر فاز باس‌ها آشکار می‌شوند.</p></div></div><div id="storyArchive" class="story-archive"></div>
+  </section>
+</main>
+<footer>ASHEN HALO V3 • Phase 2 Combat Overhaul • پنج فصل داستانی • باس‌های چندفازه • نسخه‌ی آفلاین قابل‌شخصی‌سازی</footer>
+<script src="assets/asset-config.js"></script>
+<script src="game.js"></script>
+</body></html>

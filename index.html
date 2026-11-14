@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090a10">
+<title>ASHEN HALO — Fallen Angel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ambient"></div>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">✦</span><div><b>ASHEN HALO</b><small>LEGEND OF THE BLOODWING</small></div></div>
+  <div class="topbar-right"><div class="top-stats"><span>🪙 <b id="coins">350</b></span><span>⚔️ <b id="weaponName">Ashen Sword</b></span></div><button class="profile-trigger" onclick="openHeroProfile()"><span class="profile-trigger-icon">✦</span><span>HERO PROFILE</span><b id="topProfileLevel">LV. 1</b></button></div>
+</header>
+
+<div id="profileModal" class="profile-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+  <div class="profile-backdrop" onclick="closeHeroProfile()"></div>
+  <section class="profile-panel">
+    <button class="profile-close" onclick="closeHeroProfile()" aria-label="Close profile">×</button>
+    <div class="profile-cover"><div class="profile-sigil">✦</div><div class="profile-cover-copy"><span class="eyebrow">ASHEN HALO / CHARACTER RECORD</span><h2 id="profileTitle">Hero Profile</h2><p id="profileHeroName">The Fallen Angel</p></div><div class="profile-level-orb"><small>LEVEL</small><b id="profileLevel">01</b></div></div>
+    <div class="profile-xp"><div><b>EXPERIENCE</b><span id="profileXpText">0 / 120 XP</span></div><div class="profile-xp-track"><i id="profileXpBar"></i></div></div>
+    <div class="profile-stat-grid">
+      <article><small>GOLD</small><b id="profileCoins">350</b><span>✦ Currency</span></article>
+      <article><small>MISSIONS CLEARED</small><b id="profileStages">0 / 36</b><span>✦ Campaign progress</span></article>
+      <article><small>ENEMIES DEFEATED</small><b id="profileKills">0</b><span>✦ Total kills</span></article>
+      <article><small>BOSSES DEFEATED</small><b id="profileBosses">0</b><span>✦ Major victories</span></article>
+    </div>
+    <div class="profile-details"><div><span class="eyebrow">CURRENT JOURNEY</span><b id="profileCurrentStage">The Black Gate</b><small id="profileAct">ACT I · THE FALLEN CROWN</small></div><div><span class="eyebrow">EQUIPPED WEAPON</span><b id="profileWeapon">Ashen Sword</b><small id="profileWeaponOwned">1 / 6 weapons owned</small></div><div><span class="eyebrow">PLAY TIME</span><b id="profilePlaytime">0h 00m</b><small>Time spent in this world</small></div></div>
+    <section class="profile-music-panel" aria-label="Lobby soundtrack settings">
+      <div class="profile-music-heading">
+        <span class="profile-music-emblem" aria-hidden="true">♫</span>
+        <div><span class="eyebrow">SANCTUARY SOUNDTRACK</span><h3>Lobby Music</h3><small>Choose a track included with this game.</small></div>
+      </div>
+      <div class="profile-music-controls">
+        <label class="profile-music-select-wrap" for="lobbyMusicSelect">
+          <span>TRACK LIBRARY</span>
+          <select id="lobbyMusicSelect" aria-label="Select a packaged lobby music track"><option value="">Loading music library…</option></select>
+        </label>
+        <button class="primary profile-music-toggle" id="lobbyMusicToggle" type="button" onclick="toggleLobbyMusic()" disabled>PLAY</button>
+        <label class="profile-music-volume" for="lobbyMusicVolume"><span>VOLUME</span><input id="lobbyMusicVolume" type="range" min="0" max="100" value="35"></label>
+      </div>
+      <p id="lobbyMusicStatus" class="profile-music-status" role="status">Loading the packaged soundtrack…</p>
+      <audio id="lobbyMusicAudio" preload="none" loop></audio>
+    </section>
+    <div class="profile-footer"><span>✦ YOUR STORY IS WRITTEN IN ASH AND BLOOD ✦</span><button class="primary" onclick="closeHeroProfile()">RETURN TO GAME</button></div>
+  </section>
+</div>
+
+<main>
+  <section id="lobby" class="screen active">
+    <div class="hero-panel">
+      <div class="hero-copy"><div class="eyebrow">A DARK FANTASY ADVENTURE</div>
+        <h1>THEY TOOK YOUR NAME FROM THE SKY.<br><em>NOW, TAKE IT BACK.</em></h1>
+        <p>You defied the heavens and paid with your wings. Journey through forgotten realms, break the seals, face their guardians, and decide what should become of the truth.</p>
+        <div class="hero-name-field"><label for="heroNameInput">CHOOSE YOUR ANGEL’S NAME</label><input id="heroNameInput" name="heroName" type="text" maxlength="18" value="" placeholder="e.g. Sera" autocomplete="off" spellcheck="false" oninput="previewHeroName(this.value)" aria-describedby="heroNameStatus"><div class="hero-name-foot"><span id="heroNameStatus">Choose a name before beginning your journey.</span><b id="heroNamePreview">NO NAME SELECTED</b></div></div><div class="hero-actions"><button class="primary" onclick="startGame()">BEGIN JOURNEY</button><button class="secondary" onclick="showScreen('stages')">SELECT REALM</button></div>
+
+        <div class="micro-stats"><span><b>6</b> STORY ACTS</span><span><b>36</b> MAIN MISSIONS</span><span><b>12</b> LEGENDARY BOSSES</span></div>
+      </div>
+      <div class="hero-art"><div class="halo"></div><canvas id="heroCharacterCanvas" width="180" height="200" aria-label="Character preview"></canvas><div class="art-label">YOUR CHARACTER / LIVE PREVIEW</div></div>
+    </div>
+    <div class="lobby-grid">
+      <button class="feature-card" onclick="showScreen('sanctuary')"><span class="feature-icon">⌂</span><b>ASHEN SANCTUARY</b><small>Attributes, skills & side quests</small></button>
+      <button class="feature-card" onclick="showScreen('shop')"><span class="feature-icon">⚔</span><b>ASH FORGE</b><small>Swords & upgrades</small></button>
+      <button class="feature-card" onclick="showScreen('stages')"><span class="feature-icon">♜</span><b>WORLD MAP</b><small>36 missions across 6 acts</small></button>
+      <button class="feature-card" onclick="showScreen('codex')"><span class="feature-icon">📜</span><b>LORE CODEX</b><small>Stories, names & memories</small></button>
+    </div>
+    <div class="section-heading"><div><span class="eyebrow">YOUR JOURNEY</span><h2>THE CURSED PATH</h2></div><span class="muted">Every realm can be customized</span></div>
+    <div class="journey" id="journey"></div>
+  </section>
+
+  <section id="game" class="screen">
+    <div class="game-heading"><div><span class="eyebrow">FIELD / 0<span id="stageNumber">1</span></span><h2 id="stageTitle">Ashen Forest</h2></div><div class="game-heading-actions"><button class="secondary" onclick="showScreen('lobby')">BACK TO LOBBY</button></div></div>
+    <div class="game-frame"><canvas id="gameCanvas" width="960" height="440" aria-label="Pixel-art gameplay"></canvas>
+      <div class="game-hud"><div class="health-wrap"><span id="playerNameLabel">ANGEL VITALITY</span><div class="health-track"><i id="playerHealth"></i></div><div class="energy-label" id="energyLabel">HALO 0%</div><div class="health-track energy-track" id="energyTrack"><i id="playerEnergy"></i></div></div><div class="boss-hud"><span id="bossName">Rotten Guardian</span><div class="health-track boss-track"><i id="bossHealth"></i></div></div></div>
+      <div class="mission-hud"><div><span class="eyebrow">MISSION OBJECTIVE</span><b id="missionObjective">Mission Objective</b></div><strong id="missionProgress">0 / 0</strong></div>
+      <div class="combat-ability-hud" aria-label="Ability status">
+        <div class="ability-chip"><kbd>J</kbd><b>COMBO</b><small>3 HITS</small></div>
+        <div class="ability-chip"><kbd>H</kbd><b>HEAVY</b><small id="heavyStatus">READY</small></div>
+        <div class="ability-chip"><kbd>Q</kbd><b>CRIMSON WAVE</b><small id="waveStatus">READY</small></div>
+        <div class="ability-chip"><kbd>K</kbd><b>SHADOW RIFT</b><small id="shadowStatus">READY</small></div>
+        <div class="ability-chip"><kbd>V</kbd><b>DESCENT</b><small id="descentStatus">READY</small></div>
+        <div class="ability-chip"><kbd>E</kbd><b>HALO</b><small id="haloStatus">READY</small></div>
+        <div class="ability-chip"><kbd>C</kbd><b>FROST WAVE</b><small id="frostStatus">READY</small></div>
+        <div class="ability-chip"><kbd>X</kbd><b>VOID LANCE</b><small id="voidStatus">READY</small></div>
+      </div>
+      <div class="game-help"><b>CONTROLS</b> · MOVE: A/D or ← → · DOUBLE JUMP: Space · INTERACT: T · COMBO: J · HEAVY ATTACK: H · PARRY: P · DASH: Shift (perfect dodge depends on timing) · ABILITIES: K / Q / E / V / C / X / F / R / L</div>
+      <div id="gameOverlay" class="game-overlay"><div class="overlay-rune">✦</div><span class="eyebrow" id="overlayKicker">ASHEN HALO / STORY MODE</span><h3 id="overlayTitle">ARE YOU READY?</h3><p id="overlayText">Defeat the enemies and reach the boss.</p><div class="overlay-actions"><button id="overlayButton" class="primary" onclick="resumeGame()">START BATTLE</button><button id="overlayAltButton" class="secondary hidden" style="display:none">SECOND OPTION</button></div></div>
+    </div>
+    <div class="touch-controls" aria-label="Touch controls"><button onpointerdown="touchKey('ArrowLeft',true)" onpointerup="touchKey('ArrowLeft',false)" onpointerleave="touchKey('ArrowLeft',false)" onpointercancel="touchKey('ArrowLeft',false)">◀</button><button onpointerdown="touchKey('ArrowRight',true)" onpointerup="touchKey('ArrowRight',false)" onpointerleave="touchKey('ArrowRight',false)" onpointercancel="touchKey('ArrowRight',false)">▶</button><span></span><button onpointerdown="touchKey(' ',true)" onpointerup="touchKey(' ',false)" onpointerleave="touchKey(' ',false)" onpointercancel="touchKey(' ',false)">JUMP</button><button onpointerdown="touchInteract()">INTERACT T</button><button onpointerdown="touchAttack()">⚔ COMBO J</button><button onpointerdown="touchHeavyAttack()">HEAVY H</button><button onpointerdown="touchParry()">PARRY P</button><button onpointerdown="touchWave()">WAVE Q</button><button onpointerdown="touchSpecial()">SHADOW K</button><button onpointerdown="touchDescent()">DESCENT V</button><button onpointerdown="touchBurst()">HALO E</button><button onpointerdown="touchFrostWave()">FROST C</button><button onpointerdown="touchVoidBolt()">VOID X</button><button onpointerdown="touchSoulSnare()">SNARE F</button><button onpointerdown="touchBloodRain()">RAIN R</button><button onpointerdown="touchUltimate()">ULTIMATE L</button></div>
+    <div class="combat-settings" aria-label="Combat settings"><label><input id="shakeToggle" type="checkbox"> SCREEN SHAKE</label><label><input id="flashToggle" type="checkbox" checked> HIT FLASH</label><label><input id="audioToggle" type="checkbox" checked> COMBAT AUDIO</label><label class="volume-setting">VOLUME <input id="audioVolume" type="range" min="0" max="100" value="32"></label></div>
+    <div class="game-bottom"><span>J 3-HIT COMBO · H HEAVY ATTACK · Q CRIMSON WAVE · K SHADOW RIFT · V ANGEL DESCENT · E BROKEN HALO · C FROST WAVE · X VOID LANCE · F SOUL SNARE · R BLOOD RAIN · L FINAL JUDGEMENT · SPACE DOUBLE JUMP · SHIFT DASH</span><button class="secondary" onclick="resetGame()">RESTART</button></div>
+  </section>
+
+  <section id="stages" class="screen">
+    <div class="section-heading"><div><span class="eyebrow">CHAPTER SELECT</span><h2>REALM GATES</h2><p class="muted">6 acts, 10 realms and 36 missions. Progress unlocks gradually; continue from your last checkpoint.</p></div><button class="secondary" onclick="showScreen('lobby')">BACK</button></div>
+    <div id="stageGrid" class="stage-grid"></div>
+  </section>
+
+  <section id="sanctuary" class="screen">
+    <div class="section-heading"><div><span class="eyebrow">SAFE HAVEN / CHARACTER PROGRESSION</span><h2>ASHEN SANCTUARY</h2><p class="muted">Your sanctuary grows with the story. Manage gear, skills and side quests here.</p></div><button class="secondary" onclick="showScreen('lobby')">BACK TO LOBBY</button></div>
+    <div id="sanctuaryContent" class="sanctuary-content"></div>
+  </section>
+
+  <section id="shop" class="screen">
+    <div class="section-heading"><div><span class="eyebrow">ASH FORGE</span><h2>ASH FORGE</h2><p class="muted">Weapons change your damage and attack effects.</p></div><button class="secondary" onclick="showScreen('lobby')">BACK</button></div>
+    <div id="shopGrid" class="shop-grid"></div>
+  </section>
+
+  <section id="codex" class="screen">
+    <div class="section-heading"><div><span class="eyebrow">LORE & ART BIBLE</span><h2>LORE CODEX</h2></div><button class="secondary" onclick="showScreen('lobby')">BACK</button></div>
+    <div class="lore-layout lore-layout-single"><article class="lore-card"><h3>PROLOGUE — THE ANGEL WHO CHOSE TO FALL</h3><p>Before the sky had a name, the First Halo became a bridge between the living world and the sea of memories. The angels swore that no memory would ever be sacrificed. After the First War, however, the Celestial Council began erasing painful memories. Each stolen memory became light that kept the Halo alive. The heavens shone with the price of millions of forgotten lives.</p><p><span data-hero-name>Sera</span>, guardian of the Lower Gate, was ordered to seal it. Children were trapped behind its doors. She defied the order and shattered her own Halo to free them. Her wings were stained not by evil, but by ash and the blood paid to break the lock. The Council erased her name and entrusted five seals to five guardians.</p><h3>EIREN — THE VOICE WITHIN THE HALO</h3><p>Eiren was the last scribe of the Book of Names. Before the archive fell, he hid his voice inside a crack in <span data-hero-name>Sera</span>’s Halo. He is not a living human, but a memory that refuses to end. Each broken seal restores part of Sera’s past, while Eiren’s voice grows weaker. In the end, saving the world may mean saying goodbye to the only voice that stayed beside her.</p><h3>THE ENDINGS</h3><p>“A Sky Without Chains” breaks the Halo and frees every name, forcing the world to rebuild without borrowed light. “The Heavy Light” restores the Halo and brings safety back, but the names are imprisoned once more. Neither ending is without a cost.</p></article></div>
+    <div class="section-heading story-heading"><div><span class="eyebrow">CHAPTER ARCHIVE</span><h2>SIX ACTS OF MEMORY</h2><p class="muted">Stories, conversations, secrets and boss encounters are revealed as you progress.</p></div></div><div id="storyArchive" class="story-archive"></div>
+  </section>
+</main>
+<footer>ASHEN HALO · 6 ACTS · 36 MISSIONS · 12 MAJOR GUARDIANS · OFFLINE EDITION</footer>
+<!-- Hidden media source: game.js draws this video into the gameplay canvas background. -->
+<video id="gameBackgroundVideo" class="video-source" muted loop autoplay playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+<script src="assets/campaign-data.js"></script>
+<script src="assets/asset-config.js"></script>
+<script src="music/playlist.js"></script>
+<script src="game.js"></script>
+</body></html>
